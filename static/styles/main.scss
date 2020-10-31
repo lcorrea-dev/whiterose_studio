@@ -1,0 +1,19 @@
+@import '1-utilities/variables';
+@import '1-utilities/mixins';
+
+@import '2-base/base';
+@import '2-base/fonts';
+@import '2-base/typography';
+
+@import '3-components/announcement';
+@import '3-components/loader';
+
+@import '4-layout/navigation';
+@import '4-layout/carousel';
+@import '4-layout/footer';
+@import '4-layout/awards';
+@import '4-layout/social';
+@import '4-layout/looking-for-form';
+@import '4-layout/gallery';
+
+@import '5-pages/home';

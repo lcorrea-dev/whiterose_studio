@@ -1,0 +1,19 @@
+.footer {
+    @include flex(space-around, center, row);
+    background-color: $main-color;
+    margin-top: 4rem;
+
+    p {
+        font-size: 1.2rem;
+        margin: 1.5rem 3rem;
+    }
+    img {
+        max-height: 6rem;
+        padding: 0.5rem 2rem;
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+        font-size: 95%;
+    }
+}

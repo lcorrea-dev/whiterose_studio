@@ -1,0 +1,13 @@
+#loader {
+    animation: animation 3s infinite;
+    margin: auto;
+}
+
+@keyframes animation {
+    from {
+        -webkit-transform: rotateY(0deg);
+    }
+    to {
+        -webkit-transform: rotateY(360deg);
+    }
+}

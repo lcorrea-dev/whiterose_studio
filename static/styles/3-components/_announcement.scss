@@ -1,0 +1,42 @@
+.announcement {
+    background: $gradient;
+    @include flex(space-around, center, row);
+    flex-wrap: wrap;
+    padding: 2rem 0rem;
+    margin: 5rem 0rem;
+
+    h3 {
+        font-weight: bold;
+        @media screen and (max-width: 540px) {
+            padding-bottom: 2rem;
+            padding-right: 4rem;
+            padding-left: 4rem;
+            text-align: center;
+        }
+    }
+    button {
+        padding: 1rem 4rem;
+        font-size: 2rem;
+
+        font-weight: bold;
+    }
+
+    &__submit {
+        @include flex(center, center, column);
+        text-align: center;
+        h2 {
+            font-size: 5rem;
+        }
+        padding: 10rem;
+        a {
+            color: black;
+            font-size: 2rem;
+            border: 3px solid black;
+            padding: 0.5rem;
+        }
+    }
+}
+
+.full-screen {
+    min-height: 73vh;
+}

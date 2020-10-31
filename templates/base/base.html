@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0">
+        <title>White Rose Studio || We make games</title>
+        <meta name="description"
+              content="Indie game studio that loves making 2d games.">
+        <meta name="robots"
+              content="index,follow">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"
+                integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg=="
+                crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/f0a89d1291.js"
+                crossorigin="anonymous"></script>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+              integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+              crossorigin="anonymous">
+        <link rel="stylesheet"
+              href="{% static "./styles/main.css" %}">
+        <link rel="icon"
+              href="{% static "./img/logo.svg" %}">
+
+    </head>
+
+    <body>
+        <header class="mainheader">
+            <h1 class="mainheader__logo">
+                <a href="/">
+                    <img id="header_logo"
+                         src="{% static "./img/logo.svg" %}"
+                         alt="White-Rose-Studio-logo">
+                </a>
+            </h1>
+            <nav class="mainheader__nav">
+                <ul class="horizontallist ">
+                    <li><a href="./games-gallery.html">Games</a></li>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Press kits</a></li>
+                    <li><a href="#">Merch</a></li>
+                    <li><a href="https://discord.com/"
+                           target="_blank">Discord</a></li>
+                </ul>
+                <div class="burger"><i class="fas fa-bars icono"></i></div>
+            </nav>
+        </header>
+        <main>
+            {% block content %}
+            {% endblock content %}
+        </main>
+        <footer class="
+              footer">
+            <p>&copy; 2020 White Rose Studio. All rights reserved</p>
+            <img src="{% static "/img/logo-footer.svg" %}"
+                 alt="White-Rose-Studio-logo">
+            <p>Created with
+                <i class="fas fa-heart"></i> by <a href="https://github.com/roamingpa"
+                   target="_blank">Roaming</a></p>
+        </footer>
+        <script src="{% static "./scripts/toggle-nav.js" %}"></script>
+        <script src="{% static "./scripts/scroll-navigation.js"%}"></script>
+        <script src="{% static "./scripts/crossfade.js"%}"></script>
+        <script src="{% static "./scripts/subscribe-validation.js"%}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+                integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+                crossorigin="anonymous"></script>
+    </body>
+
+</html>
