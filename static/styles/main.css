@@ -686,7 +686,7 @@ h5 {
   margin: auto;
   margin-top: 3rem;
   padding: 5rem;
-  width: 80%;
+  width: 60%;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 3%;
 }
@@ -694,6 +694,19 @@ h5 {
 .form-work-with-us h2 {
   font-size: 3.8rem;
   margin-bottom: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .form-work-with-us img {
@@ -709,6 +722,7 @@ h5 {
 
 .form-work-with-us form label {
   width: 100%;
+  margin-top: 0.5rem;
 }
 
 .form-work-with-us form input,
@@ -812,7 +826,13 @@ h5 {
   color: #ff9454;
 }
 
-#summaryErrors {
+.form-work-with-us .helptext,
+.form-work-with-us li {
+  font-size: 1.1rem;
+}
+
+#summaryErrors,
+.errorlist {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid red;
   padding: 1rem;
@@ -820,6 +840,11 @@ h5 {
   font-size: 2rem;
   color: #ff9454;
   display: none;
+}
+
+.errorlist {
+  display: contents;
+  color: #ff7373;
 }
 
 .img_gallery {

@@ -4,12 +4,13 @@
     margin: auto;
     margin-top: 3rem;
     padding: 5rem;
-    width: 80%;
+    width: 60%;
     background-color: rgba(#ffffff, 0.1);
     border-radius: 3%;
     h2 {
         font-size: 3.8rem;
         margin-bottom: 2rem;
+        @include flex(center, center, row);
     }
     img {
         object-fit: cover;
@@ -20,6 +21,7 @@
         width: 60%;
         label {
             width: 100%;
+            margin-top: 0.5rem;
         }
         input,
         select,
@@ -82,9 +84,15 @@
             color: $error_color;
         }
     }
+
+    .helptext,
+    li {
+        font-size: 1.1rem;
+    }
 }
 
-#summaryErrors {
+#summaryErrors,
+.errorlist {
     background-color: rgba(#ffffff, 0.1);
     border: 1px solid red;
     padding: 1rem;
@@ -92,4 +100,9 @@
     font-size: 2rem;
     color: $error_color;
     display: none;
+}
+
+.errorlist {
+    display: contents;
+    color: rgb(255, 115, 115);
 }
