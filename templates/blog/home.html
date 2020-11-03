@@ -4,6 +4,71 @@
 {% block content %}
 
 <div style='height:200vh;'>Home</div>
+<section class="social">
+        <div class="social__subscribe">
+                <h2>In the know</h2>
+                <p>Join 320.320 other subscribers and get the major announcements from White Rose Studio straight in
+                        your inbox.</p>
+                <form class="subscribe-form"
+                      id="subscribe-form-id"
+                      action="./sucess-form.html">
+                        <label for="txtEmail"></label>
+                        <input placeholder="email@domain.com"
+                               id="txtEmail"
+                               name="txtEmail">
+                        <button type="submit"
+                                class="btn btn-light"
+                                id="btnSubscribe">SUBMIT</button>
+
+                </form>
+                <p class="errorTxt"></p>
+        </div>
+        <div class="social__links ">
+                <ul>
+                        <li><a href="https://discord.com/"
+                                   target="_blank">
+                                        <img src={% static "./img/social/iconmonstr-discord-1.svg" %}
+                                             alt="discord-logo"
+                                             class="social__img"></a></li>
+                        <li><a href="https://www.facebook.com/fb.whiterose.studio"
+                                   target="_blank"><img src={% static "./img/social/iconmonstr-facebook-2.svg" %}
+                                             alt="facebook-logo"
+                                             class="social__img"></a></li>
+                        <li><a href="https://www.instagram.com/whiterose_games/"
+                                   target="_blank"><img src={% static "./img/social/iconmonstr-instagram-11.svg" %}
+                                             alt="instagram-logo"
+                                             class="social__img"></a></li>
+                        <li><a href="https://store.steampowered.com/?l=spanish"
+                                   target="_blank"><img src={% static "./img/social/iconmonstr-steam-4.svg" %}
+                                             alt="steam-logo"
+                                             class="social__img"></a></li>
+                        <li><a href="https://twitch.tv/"
+                                   target="_blank"><img src={% static "./img/social/iconmonstr-twitch-1.svg" %}
+                                             alt="twitch-logo"
+                                             class="social__img"></a></li>
+                        <li><a href="https://twitter.com/whiterose_games"
+                                   target="_blank"><img src={% static "./img/social/iconmonstr-twitter-1.svg" %}
+                                             alt="twitter-logo"
+                                             class="social__img"></a></li>
+                        <li><a href="https://www.youtube.com/channel/UC9Lp_6YfnLQ0bEhhNtET2rA"
+                                   target="_blank"><img src={% static "./img/social/iconmonstr-youtube-6.svg" %}
+                                             alt="youtube-logo"
+                                             class="social__img"></a></li>
+                        <li><a href="https://discord.com/"
+                                   target="_blank"><img src={% static "./img/social/iconmonstr-discord-1.svg" %}
+                                             alt="discord-logo"
+                                             class="social__img"></a></li>
+                </ul>
+        </div>
+        <div class="social__character">
+                <img src={% static "./img/knight-soul.png" %}
+                     alt="knight-soul-character"
+                     id="character_bottom">
+                <img src={% static  "./img/knight.png" %}
+                     alt="knight-character"
+                     id="character_top">
+        </div>
+</section>
 
 {% endblock content %}
 

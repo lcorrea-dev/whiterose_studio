@@ -8,7 +8,7 @@ IMGS_BY_PAGE = 9
 
 
 def display_gallery(request):
-    imgs = GalleryImage.objects.all()
+    imgs = GalleryImage.objects.all().order_by('-upload_date')
 
     paginator = Paginator(imgs, IMGS_BY_PAGE)
 
