@@ -58,7 +58,9 @@
 }
 
 /* Caption of Modal Image (Image Text) - Same Width as the Image */
-#caption {
+
+#caption,
+#author {
     font-size: 2.4rem;
     margin: auto;
     display: block;
@@ -67,12 +69,17 @@
     text-align: center;
     color: #ccc;
     padding: 10px 0;
-    height: 150px;
+    height: 40px;
 }
 
+#author {
+    font-size: 2rem;
+    padding: 0;
+}
 /* Add Animation - Zoom in the Modal */
 .modal-content,
-#caption {
+#caption,
+#author {
     animation-name: zoom;
     animation-duration: 0.6s;
 }

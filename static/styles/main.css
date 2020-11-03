@@ -912,7 +912,8 @@ h5 {
 }
 
 /* Caption of Modal Image (Image Text) - Same Width as the Image */
-#caption {
+#caption,
+#author {
   font-size: 2.4rem;
   margin: auto;
   display: block;
@@ -921,12 +922,18 @@ h5 {
   text-align: center;
   color: #ccc;
   padding: 10px 0;
-  height: 150px;
+  height: 40px;
+}
+
+#author {
+  font-size: 2rem;
+  padding: 0;
 }
 
 /* Add Animation - Zoom in the Modal */
 .modal-content,
-#caption {
+#caption,
+#author {
   -webkit-animation-name: zoom;
           animation-name: zoom;
   -webkit-animation-duration: 0.6s;

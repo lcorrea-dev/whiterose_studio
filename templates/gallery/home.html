@@ -7,9 +7,14 @@
     <h2 class="gallery_title">Our games</h2>
     <div class="img_gallery">
         {% for img in imgs %}
-        <img src={{ img.image.url }}
-             alt={{ img.title }}
-             class="screenshot">
+        <div class="container_screenshot">
+            <img src={{ img.image.url }}
+                 class="screenshot">
+            <div class="img_title"
+                 style="display:none;">{{ img.title}}</div>
+            <div class="img_author"
+                 style="display:none;">{{ img.author}}</div>
+        </div>
         {% endfor %}
 
         <div class="pagination">
@@ -39,14 +44,16 @@
              id="img01"
              alt="">
         <div id="caption"></div>
+        <div id="author"></div>
+
     </div>
 </section>
 {% endblock content %}
 
 {% block scripts %}
-<script src="./scripts/modal-view.js"></script>
-<script src="./scripts/toggle-nav.js"></script>
-<script src="./scripts/scroll-navigation.js"></script>
+<script src={% static "./scripts/modal-view.js" %}></script>
+<script src={% static "./scripts/toggle-nav.js" %}></script>
+<script src={% static "./scripts/scroll-navigation.js" %}></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>

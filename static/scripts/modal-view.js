@@ -2,14 +2,18 @@ var modal = document.getElementById('myModal');
 
 var imgs = document.getElementsByClassName('screenshot');
 
+
 var modalImg = document.getElementById('img01');
-var captionText = document.getElementById('caption');
+var caption = document.getElementById('caption');
+
+var authorText = document.getElementById('author');
 
 for (var img of imgs) {
     img.onclick = function () {
         modal.style.display = 'block';
         modalImg.src = this.src;
-        captionText.innerHTML = this.alt;
+        caption.innerText= this.nextElementSibling.innerText;
+        author.innerText= 'by ' + this.nextElementSibling.nextElementSibling.innerText
     };
 }
 
