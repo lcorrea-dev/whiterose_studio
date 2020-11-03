@@ -64,16 +64,10 @@
                 <i class="fas fa-heart"></i> by <a href="https://github.com/roamingpa"
                    target="_blank">Roaming</a></p>
         </footer>
-        <script src="{% static "./scripts/toggle-nav.js" %}"></script>
-        <script src="{% static "./scripts/scroll-navigation.js"%}"></script>
-        <script src="{% static "./scripts/crossfade.js"%}"></script>
-        <script src="{% static "./scripts/subscribe-validation.js"%}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-                crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
-                integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
-                crossorigin="anonymous"></script>
+
+        {% block scripts %}
+        {% endblock scripts %}
+
     </body>
 
 </html>
