@@ -668,6 +668,7 @@ h5 {
 }
 
 .form-work-with-us {
+  min-height: 72vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -1,4 +1,5 @@
 .form-work-with-us {
+    min-height: 72vh;
     @include flex(center, center, row);
     flex-wrap: wrap;
     margin: auto;
