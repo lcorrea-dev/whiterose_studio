@@ -1033,6 +1033,18 @@ h5 {
   margin-top: 1rem;
 }
 
+.post {
+  width: 80%;
+  margin: auto;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+}
+
+.post img {
+  max-width: 100%;
+  height: auto;
+}
+
 body {
   background-color: #24262b;
   color: white;
