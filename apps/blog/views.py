@@ -8,7 +8,7 @@ from .models import Post
 
 
 class Home(ListView):
-    paginate_by = 1
+    paginate_by = 3
     model = Post
     template_name = 'blog/home.html'
 

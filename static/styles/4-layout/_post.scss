@@ -32,3 +32,40 @@
         }
     }
 }
+
+.post_summary {
+    border: 1px solid whitesmoke;
+    width: 90%;
+    margin: auto;
+
+    @include flex(center, center, row);
+    flex-wrap: wrap;
+    &__cover {
+        min-width: 190px;
+        min-height: 190px;
+        background-size: cover;
+        align-content: center;
+    }
+
+    &__content {
+        padding: 3rem;
+        min-width: 30rem;
+        max-width: 90rem;
+    }
+}
+
+.post_container {
+    margin-top: 10rem;
+    margin-bottom: 2rem;
+}
+
+.blog_pagination {
+    @include flex(center, center, row);
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.post_read_more {
+    @include flex(flex-end, center, row);
+}
