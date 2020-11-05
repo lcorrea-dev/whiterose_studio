@@ -10,9 +10,24 @@
         <h2 class='post__title'> {{ post.title}}</h2>
         <h3 class='post__author'> {{ post.author}}</h3>
         <div class='post__body'> {{ post.body|safe}}</div>
-
-
 </div>
+
+{% if not post.comments.all %}
+<div>No comments yet... </div>
+{% else %}
+
+
+{% for comment in post.comments.all %}
+{% if comment.parent is Null %}
+<h2>{{comment.author}} {{ comment.upload_date}} {{ comment.id }} {{ comment.body }}</h2>
+{% endif %}
+
+{% for reply in comment.replies.all %}
+<p>{{comment.author}} {{ comment.upload_date}} ({{reply.parent.id}}){{ reply.body }}</p>
+{% endfor %}
+{% endfor %}
+{% endif %}
+
 
 {% endblock content %}
 

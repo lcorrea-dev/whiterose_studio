@@ -25,3 +25,18 @@ class CategoryPost(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Comment(models.Model):
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    post = models.ForeignKey(
+        Post, related_name='comments', on_delete=models.CASCADE)
+    parent = models.ForeignKey(
+        'self', null=True, related_name='replies', on_delete=models.CASCADE, blank=True)
+    body = models.TextField(max_length=500)
+    upload_date = models.DateTimeField(auto_now_add=True)
+    enabled = models.BooleanField(default=True)
+
+    def __str__(self):
+        return str(self.author) + self.body
