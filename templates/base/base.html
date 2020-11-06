@@ -45,8 +45,17 @@
                     <li><a href="#">News</a></li>
                     <li><a href="#">Press kits</a></li>
                     <li><a href="#">Merch</a></li>
-                    <li><a href="https://discord.com/"
-                           target="_blank">Discord</a></li>
+
+                    <li>
+
+                        <a href="#"
+                           target="_blank"> {{ user.username }} </a>
+
+                    </li>
+                    {% if not user.is_authenticated %}
+                    <li><a href="#">Register</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    {% endif %}
                 </ul>
                 <div class="burger"><i class="fas fa-bars icono"></i></div>
             </nav>

@@ -20,6 +20,20 @@ class Post(models.Model):
         return self.title
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+    pic = models.ImageField(null=True, blank=True, upload_to="profile/")
+    website_url = models.URLField(max_length=255, null=True, blank=True)
+    fb_url = models.URLField(max_length=255, null=True, blank=True)
+    twitter_url = models.URLField(max_length=255, null=True, blank=True)
+    instagram_url = models.URLField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.user)
+
+
 class CategoryPost(models.Model):
     name = models.CharField(max_length=30)
 
