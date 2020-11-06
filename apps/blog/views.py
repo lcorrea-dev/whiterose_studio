@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.urls import reverse_lazy
 
-from django.views.generic import ListView
+from django.views.generic import ListView, UpdateView
 from django.core.paginator import Paginator
 from .models import Post, Profile
+from .forms import ProfileForm
 # Create your views here.
 
 
@@ -28,3 +30,12 @@ def detail_profile(request, id):
     profile = Profile.objects.get(id=id)
     context = {'profile': profile}
     return render(request, 'blog/profile-detail.html', context)
+
+
+class ProfileUpdate(UpdateView):
+    model = Profile
+    form_class = ProfileForm
+    template_name = 'blog/profile-update.html'
+
+    def get_success_url(self):
+        return reverse_lazy('blog-profile-detail', kwargs={'id': self.object.id})
