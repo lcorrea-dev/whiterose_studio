@@ -8,7 +8,7 @@
                      alt="">
         </div>
         <h2 class='post__title'> {{ post.title}}</h2>
-        <h3 class='post__author'> {{ post.author}}</h3>
+        <h3 class='post__author'> <a href="{% url 'blog-profile-detail' post.author.id %}">{{post.author}}</a></h3>
         <div class='post__body'> {{ post.body|safe}}</div>
 
 

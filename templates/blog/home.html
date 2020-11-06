@@ -13,7 +13,7 @@
                 <div class='post_summary__content'>
                         <div>{{post.category}}</div>
                         <div>{{post.title}}</div>
-                        <div>{{post.author}}</div>
+                        <a href="{% url 'blog-profile-detail' post.author.id %}">{{post.author}}</a>
                         <p>{{ post.body|safe|striptags|truncatechars_html:"150" }}</p>
                         <div>{{post.upload_date}}</div>
                         <div class="post_read_more"><a href="{% url 'blog-post-detail' post.id %}">Read more...</a>

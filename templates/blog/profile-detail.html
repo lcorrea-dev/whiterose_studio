@@ -1,0 +1,10 @@
+{% extends '../base/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class='profile'>
+    <h2 class='post__title'> {{ profile}}</h2>
+    <h3 class='post__author'> {{ profile.user.email}} </h3>
+    <div class='post__body'> </div>
+</div>
+{% endblock content %}
