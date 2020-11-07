@@ -1,15 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 
 from django.views.generic import ListView, UpdateView
 from django.core.paginator import Paginator
 from .models import Post, Profile
-from .forms import ProfileForm
+from .forms import ProfileForm, CommentForm
 # Create your views here.
 
 
-class Home(ListView):
+class PostList(ListView):
     paginate_by = 3
     model = Post
     template_name = 'blog/home.html'
@@ -22,8 +22,19 @@ class Home(ListView):
 
 def detail_post(request, id):
     post = Post.objects.get(id=id)
-    context = {'post': post}
-    return render(request, 'blog/post-detail.html', context)
+    if request.method == "POST":
+        incoming_form = CommentForm(request.POST)
+        if incoming_form.is_valid():
+            comment = incoming_form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+            return redirect(request.path)
+    else:
+        form = CommentForm()
+        # post = Post.objects.get(id=id)
+        context = {'post': post, 'form': form}
+        return render(request, 'blog/post-detail.html', context)
 
 
 def detail_profile(request, id):

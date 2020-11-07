@@ -2,6 +2,18 @@
 {% load static %}
 
 {% block content %}
+
+
+{% if user.is_authenticated %}
+<form method="POST">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <button type="submit">Comment!</button>
+</form>
+{% else %}
+<div>Login to make a comment</div>
+{% endif %}
+
 <div class='post'>
         <div class='post__cover'>
                 <img src="{{ post.cover.url}}"
@@ -12,23 +24,31 @@
         <div class='post__body'> {{ post.body|safe}}</div>
 
 
+
         {% if not post.comments.all %}
         <div>No comments yet... </div>
         {% else %}
 
 
         {% for comment in post.comments.all %}
-        {% if comment.parent is Null %}
+        {% if comment.parent is Null and comment.enabled is True %}
         <h2>{{comment.author}} {{ comment.upload_date}} {{ comment.id }} {{ comment.body }}</h2>
         {% endif %}
 
-        {% for reply in comment.replies.all %}
+        <!-- {% for reply in comment.replies.all %}
         <p>{{comment.author}} {{ comment.upload_date}} ({{reply.parent.id}}){{ reply.body }}</p>
-        {% endfor %}
+        {% endfor %} -->
         {% endfor %}
         {% endif %}
 
+
+
+
+
 </div>
+
+
+
 
 
 
