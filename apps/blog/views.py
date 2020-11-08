@@ -4,8 +4,10 @@ from django.urls import reverse_lazy
 
 from django.views.generic import ListView, UpdateView
 from django.core.paginator import Paginator
-from .models import Post, Profile
-from .forms import ProfileForm, CommentForm
+from .models import Post, Profile, CategoryPost
+from .forms import ProfileForm, CommentForm, FilterForm
+
+from django.db.models import Q
 # Create your views here.
 
 
@@ -17,7 +19,43 @@ class PostList(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['enabled'] = True
+        context['form'] = FilterForm()
         return context
+
+
+class FilterPostList(ListView):
+    model = Post
+    paginate_by = 3
+    template_name = 'blog/post-search.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['enabled'] = True
+        context['form'] = FilterForm()
+        return context
+
+    def get_queryset(self):
+        content = self.request.GET.get('content')
+        if not content:
+            content = ""
+        category = self.request.GET.get('category')
+        author = self.request.GET.get('author')
+        from_upload_date = self.request.GET.get('from_upload_date')
+        if not from_upload_date:
+            from_upload_date = '1900-01-01'
+        to_upload_date = self.request.GET.get('to_upload_date')
+
+        object_list = Post.objects.filter(
+            (Q(title__icontains=content) | Q(body__icontains=content))
+            & Q(upload_date__range=(from_upload_date, to_upload_date))
+        )
+
+        if category:
+            object_list = object_list.filter(Q(category=category))
+
+        if author:
+            object_list = object_list.filter(Q(author__username=author))
+        return object_list
 
 
 def detail_post(request, id):

@@ -1,6 +1,8 @@
 from django.contrib.auth.forms import UserChangeForm
 from django import forms
-from .models import Profile, Comment
+from .models import Profile, Comment, CategoryPost, Post
+import datetime
+from django.contrib.admin.widgets import AdminDateWidget
 
 
 class ProfileForm(UserChangeForm):
@@ -24,3 +26,15 @@ class CommentForm(forms.ModelForm):
         ]
         widgets = {
             'body': forms.Textarea(attrs={'class': 'form-control'}), }
+
+
+class FilterForm(forms.Form):
+    content = forms.CharField(label='Content text',
+                              max_length=50, required=False)
+    category = forms.ModelChoiceField(label='Category',
+                                      queryset=CategoryPost.objects.all(), empty_label="All", required=False)
+    author = forms.CharField(label='Author', max_length=50, required=False)
+    from_upload_date = forms.DateField(
+        label='date', required=False, widget=AdminDateWidget())
+    to_upload_date = forms.DateField(
+        required=False, initial=datetime.date.today, widget=AdminDateWidget())

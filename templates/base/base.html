@@ -3,14 +3,14 @@
 <html lang="en">
 
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" />
         <meta name="viewport"
-              content="width=device-width, initial-scale=1.0">
+              content="width=device-width, initial-scale=1.0" />
         <title>White Rose Studio || We make games</title>
         <meta name="description"
-              content="Indie game studio that loves making 2d games.">
+              content="Indie game studio that loves making 2d games." />
         <meta name="robots"
-              content="index,follow">
+              content="index,follow" />
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -22,11 +22,13 @@
         <link rel="stylesheet"
               href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
               integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
-              crossorigin="anonymous">
+              crossorigin="anonymous" />
         <link rel="stylesheet"
               href="{% static "./styles/main.css" %}">
         <link rel="icon"
               href="{% static "./img/logo.svg" %}">
+        {% block css %} {% endblock css %}
+
 
     </head>
 
@@ -40,7 +42,7 @@
                 </a>
             </h1>
             <nav class="mainheader__nav">
-                <ul class="horizontallist ">
+                <ul class="horizontallist">
                     <li><a href="./games-gallery.html">Games</a></li>
                     <li><a href="#">News</a></li>
                     <li><a href="#">Press kits</a></li>
@@ -51,32 +53,31 @@
                     <li><a href="{% url 'login' %}">Login</a></li>
                     {% else %}
 
-                    <li><a href="{% url 'blog-profile-detail' user.id %}"> {{ user.username }} </a> </li>
+                    <li>
+                        <a href="{% url 'blog-profile-detail' user.id %}">
+                            {{ user.username }}
+                        </a>
+                    </li>
                     <li><a href="{% url 'logout' %}"> Logout </a></li>
-
 
                     {% endif %}
                 </ul>
                 <div class="burger"><i class="fas fa-bars icono"></i></div>
             </nav>
         </header>
-        <main>
-            {% block content %}
-            {% endblock content %}
-        </main>
-        <footer class="
-              footer">
+        <main>{% block content %} {% endblock content %}</main>
+        <footer class="footer">
             <p>&copy; 2020 White Rose Studio. All rights reserved</p>
             <img src="{% static "/img/logo-footer.svg" %}"
                  alt="White-Rose-Studio-logo">
-            <p>Created with
-                <i class="fas fa-heart"></i> by <a href="https://github.com/roamingpa"
-                   target="_blank">Roaming</a></p>
+            <p>
+                Created with <i class="fas fa-heart"></i> by
+                <a href="https://github.com/roamingpa"
+                   target="_blank">Roaming</a>
+            </p>
         </footer>
 
-        {% block scripts %}
-        {% endblock scripts %}
-
+        {% block scripts %} {% endblock scripts %}
     </body>
 
 </html>

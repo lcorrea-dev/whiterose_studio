@@ -1,26 +1,17 @@
-{% extends '../base/base.html' %}
-
-{% block content %}
-<div id="registro"
-     class="form-work-with-us">
-
-    <form method="POST"
-          id="formulario">
+{% extends '../base/base.html' %} {% block content %}
+<div id="registro" class="form-work-with-us">
+    <form method="POST" id="formulario">
         {% csrf_token %}
-        <h2>Login </h2>
+        <h2>Login</h2>
         <div class="form-group">
-            <label for="username">Username</label><br>
-            <input name="username"
-                   class="form-control"
-                   type="text" />
+            <label for="username">Username</label><br />
+            <input name="username" class="form-control" type="text" />
             <div>{{ form.errors.username }}</div>
         </div>
 
         <div class="form-group">
-            <label for="password">Password</label><br>
-            <input name="password"
-                   class="form-control"
-                   type="password" />
+            <label for="password">Password</label><br />
+            <input name="password" class="form-control" type="password" />
             <div>{{ form.errors.password }}</div>
         </div>
 
@@ -28,15 +19,9 @@
         <div class="form-group">
             <div>Please correct your inputs</div>
         </div>
-        {% endif %}
+        {% endif %} {{form.non_field_errors}}
 
-        {{form.non_field_errors}}
-
-
-        <button class="btn"
-                type="submit">LOGIN</button>
-
-
+        <button class="btn" type="submit">LOGIN</button>
     </form>
 </div>
 {% endblock %}

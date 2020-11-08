@@ -1,15 +1,11 @@
-{% extends '../base/base.html' %}
-
-
-{% block content %}
-<div class='profile'>
+{% extends '../base/base.html' %} {% block content %}
+<div class="profile">
     {% if user.is_authenticated and user == profile.user %}
     <a href="">Edit your profile</a>
     {% endif %}
 
-
-    <h2 class='post__title'> {{ profile}}</h2>
-    <h3 class='post__author'> {{ profile.user.email}} </h3>
-    <div class='post__body'> </div>
+    <h2 class="post__title">{{ profile}}</h2>
+    <h3 class="post__author">{{ profile.user.email}}</h3>
+    <div class="post__body"></div>
 </div>
 {% endblock content %}

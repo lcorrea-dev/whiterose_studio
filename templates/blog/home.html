@@ -1,7 +1,22 @@
 {% extends '../base/base.html' %}
 {% load static %}
 
+{% block css %}
+        <script src="{% url 'js-catlog' %}"></script>
+        <script src="{% static '/admin/js/core.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'admin/css/widgets.css' %}">
+
+{% endblock css %}
+
 {% block content %}
+
+<form method="GET" action="{% url 'blog-post-search' %}" >
+        {{ form.media }}
+        {{ form.as_p }} 
+        <button type="submit"
+                value="Submit">Editar</button>
+</form>
+
 <div class="post_container">
         {% for post in object_list %}
 
@@ -122,4 +137,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
         integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
         crossorigin="anonymous"></script>
+
+
+    
 {% endblock scripts %}
