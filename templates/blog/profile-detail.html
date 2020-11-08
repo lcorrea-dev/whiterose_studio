@@ -1,7 +1,9 @@
 {% extends '../base/base.html' %} {% block content %}
 <div class="profile">
     {% if user.is_authenticated and user == profile.user %}
-    <a href="">Edit your profile</a>
+    <a href="{% url 'blog-profile-update' profile.user.id %}"
+        >Edit your profile</a
+    >
     {% endif %}
 
     <h2 class="post__title">{{ profile}}</h2>

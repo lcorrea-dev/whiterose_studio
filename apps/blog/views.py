@@ -8,7 +8,6 @@ from .models import Post, Profile, CategoryPost
 from .forms import ProfileForm, CommentForm, FilterForm
 
 from django.db.models import Q
-# Create your views here.
 
 
 class PostList(ListView):

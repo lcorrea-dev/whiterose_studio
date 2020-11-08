@@ -43,10 +43,7 @@
             </h1>
             <nav class="mainheader__nav">
                 <ul class="horizontallist">
-                    <li><a href="./games-gallery.html">Games</a></li>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">Press kits</a></li>
-                    <li><a href="#">Merch</a></li>
+                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
 
                     {% if not user.is_authenticated %}
                     <li><a href="{% url 'register_user' %}">Register</a></li>
