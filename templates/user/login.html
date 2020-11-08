@@ -22,6 +22,8 @@
         {% endif %} {{form.non_field_errors}}
 
         <button class="btn" type="submit">LOGIN</button>
+
+        <a href="{% url 'password_reset' %}">Forgot password?</a>
     </form>
 </div>
 {% endblock %}
