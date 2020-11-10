@@ -7,6 +7,8 @@ from django.core.paginator import Paginator
 from .models import Post, Profile, CategoryPost
 from .forms import ProfileForm, CommentForm, FilterForm
 
+from datetime import timedelta, datetime
+
 from django.db.models import Q
 
 
@@ -46,7 +48,8 @@ class FilterPostList(ListView):
         from_upload_date = self.request.GET.get('from_upload_date')
         if not from_upload_date:
             from_upload_date = '1900-01-01'
-        to_upload_date = self.request.GET.get('to_upload_date')
+        to_upload_date = self.request.GET.get(
+            'to_upload_date')
 
         object_list = Post.objects.filter(
             (Q(title__icontains=content) | Q(body__icontains=content))

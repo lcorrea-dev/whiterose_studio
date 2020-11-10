@@ -26,7 +26,7 @@ SECRET_KEY = '=)-e$@2qz$w4lofaj!2pirlo8$-(xlf(09b-f5sfk2!#g!z+=c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -131,9 +131,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
 
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
-
-# config/settings.py
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
