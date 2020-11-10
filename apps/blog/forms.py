@@ -1,8 +1,9 @@
 from django.contrib.auth.forms import UserChangeForm
 from django import forms
 from .models import Profile, Comment, CategoryPost, Post
-import datetime
+
 from django.contrib.admin.widgets import AdminDateWidget
+from django.utils import timezone
 
 
 class ProfileForm(UserChangeForm):
@@ -37,4 +38,4 @@ class FilterForm(forms.Form):
     from_upload_date = forms.DateField(
         label='date', required=False, widget=AdminDateWidget())
     to_upload_date = forms.DateField(
-        required=False, initial=datetime.date.today, widget=AdminDateWidget())
+        required=False, initial=timezone.now, widget=AdminDateWidget())

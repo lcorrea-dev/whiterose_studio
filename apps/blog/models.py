@@ -11,7 +11,7 @@ class Post(models.Model):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     cover = models.ImageField(
-        blank=True, default='cover/default-cover-img.gif', upload_to='cover')
+        blank=True, upload_to='cover')
     body = RichTextField(validators=[MinLengthValidator(150)])
     category = models.ForeignKey(
         'CategoryPost', on_delete=models.CASCADE, blank=True, null=True,

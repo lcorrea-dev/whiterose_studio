@@ -8,15 +8,16 @@ from .models import Post, Profile, CategoryPost
 from .forms import ProfileForm, CommentForm, FilterForm
 
 from datetime import timedelta, datetime
+from django.utils.timezone import make_aware
 
 from django.db.models import Q
 
 
 class PostList(ListView):
-    paginate_by = 3
     model = Post
     template_name = 'blog/home.html'
     ordering = ['-upload_date']
+    paginate_by = 3
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -28,9 +29,9 @@ class PostList(ListView):
 
 class FilterPostList(ListView):
     model = Post
-    paginate_by = 3
     template_name = 'blog/post-search.html'
     ordering = ['-upload_date']
+    paginate_by = 3
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -47,13 +48,16 @@ class FilterPostList(ListView):
         author = self.request.GET.get('author')
         from_upload_date = self.request.GET.get('from_upload_date')
         if not from_upload_date:
-            from_upload_date = '1900-01-01'
+            from_upload_date = make_aware(
+                datetime.strptime('1900-01-01', '%Y-%m-%d'))
         to_upload_date = self.request.GET.get(
             'to_upload_date')
+        if to_upload_date:
+            to_upload_date += " 23:59:59"
 
         object_list = Post.objects.filter(
             (Q(title__icontains=content) | Q(body__icontains=content))
-            & Q(upload_date__range=(from_upload_date, to_upload_date+" 23:59:59"))
+            & Q(upload_date__range=(from_upload_date, to_upload_date))
         )
 
         if category:
@@ -61,7 +65,7 @@ class FilterPostList(ListView):
 
         if author:
             object_list = object_list.filter(Q(author__username=author))
-        return object_list
+        return object_list.order_by('-upload_date')
 
 
 def detail_post(request, id):
