@@ -20,6 +20,11 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def save(self, *args, **kwargs):
+        if not self.cover:
+            self.cover = 'cover/default-cover-img.gif'
+            super(Post, self).save(*args, **kwargs)
+
 
 class Profile(models.Model):
     user = models.OneToOneField(
