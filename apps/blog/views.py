@@ -1,8 +1,9 @@
+from django.utils.decorators import method_decorator
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 
-from django.views.generic import ListView, UpdateView, CreateView
+from django.views.generic import ListView, UpdateView, CreateView, DeleteView
 from django.core.paginator import Paginator
 from .models import Post, Profile, CategoryPost
 from .forms import ProfileForm, CommentForm, FilterForm, CreatePostForm
@@ -120,3 +121,10 @@ def create_post(request):
         form = CreatePostForm()
         context = {'form': form}
         return render(request, 'blog/post-create.html', context)
+
+
+@method_decorator(staff_member_required(login_url='/login/'), name='dispatch')
+class PostDelete(DeleteView):
+    model = Post
+    template_name = 'blog/post-delete.html'
+    success_url = reverse_lazy('blog-home')

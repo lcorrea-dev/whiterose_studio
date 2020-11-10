@@ -1,0 +1,15 @@
+{% extends '../base/base.html' %} {% load static %} {% block content %}
+<div class="text-center">
+    <form method="post">
+        {% csrf_token %}
+
+        <p class="delete-msg">
+            Are you sure you want to delete post {{ object.title }} created by
+            {{ object.author }} at {{ object.upload_date }}?
+        </p>
+
+        <a href="{% url 'blog-home' %}" class="btn btn-secondary">NO</a>
+        <button class="btn btn-primary" type="submit">YES</button>
+    </form>
+</div>
+{% endblock %}

@@ -7,7 +7,10 @@ from django.utils import timezone
 
 
 class ProfileForm(UserChangeForm):
+    password = None
+
     class Meta:
+
         model = Profile
         fields = [
             'bio',

@@ -10,12 +10,16 @@
 
 {% block content %}
 
-<form method="GET" action="{% url 'blog-post-search' %}" >
+<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Filter posts
+</a>
+<form method="GET" action="{% url 'blog-post-search' %}" class="collapse" id="collapseExample"> 
         {{ form.media }}
         {{ form.as_p }} 
         <button type="submit"
                 value="Submit">Editar</button>
 </form>
+
 
 <div class="post_container">
         {% for post in object_list %}
