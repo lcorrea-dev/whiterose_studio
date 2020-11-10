@@ -1,5 +1,8 @@
-{% extends '../base/base.html' %} {% block content %} {% if object_list %} {%
-for user in object_list %}
+{% extends '../base/base.html' %}
+{% block content %}
+
+{% if object_list %}
+{% for user in object_list %}
 <p>Nombre: {{ user.username }}</p>
 <p>email: {{ user.email }}</p>
 

@@ -7,7 +7,7 @@ from django.utils.timezone import make_aware
 from django.contrib.auth import get_user_model
 
 
-class CommentTestCase(TestCase):
+class PostTestCase(TestCase):
     def setUp(self):
         user = get_user_model().objects.create()
         body = '''Lorem ipsum dolor sit amet, consectetur adipiscing elit. 

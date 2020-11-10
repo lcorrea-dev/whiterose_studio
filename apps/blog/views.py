@@ -2,15 +2,21 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 
-from django.views.generic import ListView, UpdateView
+from django.views.generic import ListView, UpdateView, CreateView
 from django.core.paginator import Paginator
 from .models import Post, Profile, CategoryPost
-from .forms import ProfileForm, CommentForm, FilterForm
+from .forms import ProfileForm, CommentForm, FilterForm, CreatePostForm
 
 from datetime import timedelta, datetime
 from django.utils.timezone import make_aware
 
 from django.db.models import Q
+
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
+
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class PostList(ListView):
@@ -80,7 +86,6 @@ def detail_post(request, id):
             return redirect(request.path)
     else:
         form = CommentForm()
-        # post = Post.objects.get(id=id)
         context = {'post': post, 'form': form}
         return render(request, 'blog/post-detail.html', context)
 
@@ -91,10 +96,27 @@ def detail_profile(request, id):
     return render(request, 'blog/profile-detail.html', context)
 
 
-class ProfileUpdate(UpdateView):
+class ProfileUpdate(LoginRequiredMixin, UpdateView):
+    login_url = '/login/'
+
     model = Profile
     form_class = ProfileForm
     template_name = 'blog/profile-update.html'
 
     def get_success_url(self):
         return reverse_lazy('blog-profile-detail', kwargs={'id': self.object.id})
+
+
+@staff_member_required(login_url='/login/')
+def create_post(request):
+    if request.method == "POST":
+        incoming_form = CreatePostForm(request.POST)
+        if incoming_form.is_valid():
+            comment = incoming_form.save(commit=False)
+            comment.author = request.user
+            comment.save()
+            return redirect(request.path)
+    else:
+        form = CreatePostForm()
+        context = {'form': form}
+        return render(request, 'blog/post-create.html', context)

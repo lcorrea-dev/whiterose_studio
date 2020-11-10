@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
@@ -7,7 +8,9 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from .forms import RegisterForm
 from ..blog.models import Profile
-# Create your views here.
+
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
 
 
 class RegisterUser(CreateView):
@@ -22,6 +25,7 @@ class RegisterUser(CreateView):
         return response
 
 
+@method_decorator(staff_member_required(login_url='/login/'), name='dispatch')
 class UserList(ListView):
     model = User
     template_name = 'user/list.html'
