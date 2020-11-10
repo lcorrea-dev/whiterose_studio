@@ -15,6 +15,10 @@
 {% endif %}
 
 <div class='post'>
+        {% if user.is_staff %}
+                <div><a href="{% url 'blog-post-delete' post.id%}">Delete</a></div>
+        {% endif %}
+
         <div class='post__cover'>
                 <img src="{{ post.cover.url}}"
                      alt="">

@@ -13,7 +13,7 @@
             <div class="img_title"
                  style="display:none;">{{ img.title}}</div>
             <div class="img_author"
-                 style="display:none;">{{ img.author}}</div>
+                 style="display:none;"><a href="{% url 'blog-profile-detail' img.author.id %}">{{img.author}}</a></div>
         </div>
         {% endfor %}
 

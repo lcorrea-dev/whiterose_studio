@@ -13,7 +13,7 @@ for (var img of imgs) {
         modal.style.display = 'block';
         modalImg.src = this.src;
         caption.innerText= this.nextElementSibling.innerText;
-        author.innerText= 'by ' + this.nextElementSibling.nextElementSibling.innerText
+        author.innerHTML= 'by ' + this.nextElementSibling.nextElementSibling.innerHTML
     };
 }
 
