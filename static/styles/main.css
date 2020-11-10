@@ -1132,6 +1132,10 @@ h5 {
   max-width: 90rem;
 }
 
+.post_summary__body {
+  word-break: break-all;
+}
+
 .post_container {
   margin-top: 10rem;
   margin-bottom: 2rem;
@@ -1170,6 +1174,10 @@ h5 {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+}
+
+.post__body {
+  word-break: break-all;
 }
 
 body {

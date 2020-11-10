@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from ckeditor.fields import RichTextField
-# Create your models here.
+from django.core.validators import MinLengthValidator
 
 
 class Post(models.Model):
@@ -10,8 +10,9 @@ class Post(models.Model):
     upload_date = models.DateTimeField()
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    cover = models.ImageField()
-    body = RichTextField(blank=True, null=True)
+    cover = models.ImageField(
+        blank=True, default='cover/default-cover-img.gif', upload_to='cover')
+    body = RichTextField(validators=[MinLengthValidator(150)])
     category = models.ForeignKey(
         'CategoryPost', on_delete=models.CASCADE, blank=True, null=True,
     )

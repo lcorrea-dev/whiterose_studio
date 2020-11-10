@@ -52,6 +52,10 @@
         min-width: 30rem;
         max-width: 90rem;
     }
+
+    &__body {
+        word-break: break-all;
+    }
 }
 
 .post_container {
@@ -68,4 +72,8 @@
 
 .post_read_more {
     @include flex(flex-end, center, row);
+}
+
+.post__body {
+    word-break: break-all;
 }

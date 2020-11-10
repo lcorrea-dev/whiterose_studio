@@ -14,6 +14,7 @@ class PostList(ListView):
     paginate_by = 3
     model = Post
     template_name = 'blog/home.html'
+    ordering = ['-upload_date']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -27,6 +28,7 @@ class FilterPostList(ListView):
     model = Post
     paginate_by = 3
     template_name = 'blog/post-search.html'
+    ordering = ['-upload_date']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
