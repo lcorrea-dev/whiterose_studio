@@ -45,6 +45,9 @@ class FilterForm(forms.Form):
 
 
 class CreatePostForm(forms.ModelForm):
+    upload_date = forms.DateField(
+        initial=timezone.now, widget=AdminDateWidget())
+
     class Meta:
         model = Post
         fields = ['title', 'upload_date', 'cover', 'body', 'category']

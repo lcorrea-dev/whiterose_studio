@@ -14,7 +14,7 @@ class Post(models.Model):
         blank=True, upload_to='cover')
     body = RichTextField(validators=[MinLengthValidator(150)])
     category = models.ForeignKey(
-        'CategoryPost', on_delete=models.CASCADE, blank=True, null=True,
+        'CategoryPost', on_delete=models.CASCADE,
     )
 
     def __str__(self):

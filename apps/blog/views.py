@@ -113,10 +113,12 @@ def create_post(request):
     if request.method == "POST":
         incoming_form = CreatePostForm(request.POST)
         if incoming_form.is_valid():
-            comment = incoming_form.save(commit=False)
-            comment.author = request.user
-            comment.save()
-            return redirect(request.path)
+            post = incoming_form.save(commit=False)
+            post.author = request.user
+            post.save()
+
+            # return redirect(request.path)
+            return redirect('blog-post-detail', post.id)
     else:
         form = CreatePostForm()
         context = {'form': form}
