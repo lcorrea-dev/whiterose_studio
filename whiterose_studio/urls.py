@@ -34,10 +34,6 @@ urlpatterns = [
     path('gallery/', include('apps.gallery.urls')),
     path('login/', auth_views.LoginView.as_view(redirect_authenticated_user=True,
                                                 template_name='user/login.html'), name='login'),
-
-
-
-
     path('logout/', auth_views.LogoutView.as_view(template_name='user/logout.html'), name='logout'),
 
 ]

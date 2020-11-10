@@ -53,7 +53,7 @@ class FilterPostList(ListView):
 
         object_list = Post.objects.filter(
             (Q(title__icontains=content) | Q(body__icontains=content))
-            & Q(upload_date__range=(from_upload_date, to_upload_date))
+            & Q(upload_date__range=(from_upload_date, to_upload_date+" 23:59:59"))
         )
 
         if category:
