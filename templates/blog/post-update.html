@@ -1,0 +1,11 @@
+{% extends '../base/base.html' %} {% load static %} {% block css %}
+<script src="{% url 'js-catlog' %}"></script>
+<script src="{% static '/admin/js/core.js' %}"></script>
+<link rel="stylesheet" href="{% static 'admin/css/widgets.css' %}" />
+
+{% endblock css %} {% block content %}
+<form method="POST" enctype="multipart/form-data">
+    {{ form.media }} {{ form.as_p }} {% csrf_token %}
+    <button type="submit" value="update">Update now!</button>
+</form>
+{% endblock content %}

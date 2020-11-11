@@ -21,8 +21,16 @@
         {% for post in object_list %}
 
         <div class='post_summary'>
+{% if post.cover %}
+
                 <div style="background-image: url({{post.cover.url}})"
-                     class='post_summary__cover'>
+                     class='post_summary__cover '>
+                {% else %}
+                
+                <div style="background-image: url({% static "./img/logo.svg" %})"
+                     class='post_summary__cover '>
+                {% endif %}
+
 
                 </div>
                 <div class='post_summary__content'>

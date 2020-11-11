@@ -25,12 +25,19 @@
         {% for post in object_list %}
 
         <div class='post_summary'>
+                {% if post.cover %}
+
                 <div style="background-image: url({{post.cover.url}})"
-                     class='post_summary__cover'>
+                     class='post_summary__cover '>
+                {% else %}
+                
+                <div style="background-image: url({% static "./img/logo.svg" %})"
+                     class='post_summary__cover '>
+                {% endif %}
 
                 </div>
                 <div class='post_summary__content'>
-                        <div>{{post.category}}</div>
+                        <div class="badge bg-primary">{{post.category}}</div>
                         <div>{{post.title}}</div>
                         <a href="{% url 'blog-profile-detail' post.author.id %}">{{post.author}}</a>
                         <p class="post__body">{{ post.body|safe|striptags|truncatechars_html:"150" }}</p>
@@ -58,7 +65,7 @@
                 <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
                 {% endif %}
         </span>
-</div>
+</div> 
 
 
 

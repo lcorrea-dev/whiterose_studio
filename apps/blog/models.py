@@ -11,7 +11,7 @@ class Post(models.Model):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     cover = models.ImageField(
-        blank=True, upload_to='cover')
+        blank=True, upload_to='cover/')
     body = RichTextField(validators=[MinLengthValidator(150)])
     category = models.ForeignKey(
         'CategoryPost', on_delete=models.CASCADE,
@@ -20,10 +20,10 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    def save(self, *args, **kwargs):
-        if not self.cover:
-            self.cover = 'cover/default-cover-img.gif'
-            super(Post, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if not self.cover:
+    #         self.cover = 'cover/default-cover-img.gif'
+    #         super(Post, self).save(*args, **kwargs)
 
 
 class Profile(models.Model):

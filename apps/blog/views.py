@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, UpdateView, CreateView, DeleteView
 from django.core.paginator import Paginator
 from .models import Post, Profile, CategoryPost
-from .forms import ProfileForm, CommentForm, FilterForm, CreatePostForm
+from .forms import ProfileForm, CommentForm, FilterForm, CreatePostForm, UpdatePostForm
 
 from datetime import timedelta, datetime
 from django.utils.timezone import make_aware
@@ -106,6 +106,29 @@ class ProfileUpdate(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('blog-profile-detail', kwargs={'id': self.object.id})
+
+
+@method_decorator(staff_member_required(login_url='/login/'), name='dispatch')
+class PostUpdate(UpdateView):
+    model = Post
+    form_class = UpdatePostForm
+    template_name = 'blog/post-update.html'
+
+    def get_success_url(self):
+        return reverse_lazy('blog-post-detail', kwargs={'id': self.object.id})
+
+
+def update_post(request, id):
+    post = Post.objects.get(id=id)
+    incoming_form = UpdatePostForm(
+        request.POST or None, request.FILES or None, instance=post)
+    if request.method == "POST":
+        if incoming_form.is_valid():
+            incoming_form.save()
+            return redirect(request.path)
+    else:
+        context = {'form': incoming_form}
+        return render(request, 'blog/post-update.html', context)
 
 
 @staff_member_required(login_url='/login/')
