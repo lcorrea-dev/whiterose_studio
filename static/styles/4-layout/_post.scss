@@ -58,6 +58,10 @@
     }
 }
 
+.post__author {
+    margin-bottom: 10rem;
+}
+
 .post_container {
     margin-top: 10rem;
     margin-bottom: 2rem;
@@ -76,4 +80,13 @@
 
 .post__body {
     word-break: break-all;
+}
+
+.category {
+    padding: 1rem;
+    font-size: 1.4rem;
+}
+
+.post__summary_title_a {
+    font-size: 1.8rem;
 }

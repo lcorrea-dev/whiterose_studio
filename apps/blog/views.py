@@ -24,7 +24,7 @@ class PostList(ListView):
     model = Post
     template_name = 'blog/home.html'
     ordering = ['-upload_date']
-    paginate_by = 3
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -38,13 +38,12 @@ class FilterPostList(ListView):
     model = Post
     template_name = 'blog/post-search.html'
     ordering = ['-upload_date']
-    paginate_by = 3
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['enabled'] = True
         context['form'] = FilterForm()
-
         return context
 
     def get_queryset(self):
@@ -134,7 +133,8 @@ def update_post(request, id):
 @staff_member_required(login_url='/login/')
 def create_post(request):
     if request.method == "POST":
-        incoming_form = CreatePostForm(request.POST)
+        incoming_form = CreatePostForm(
+            request.POST or None, request.FILES or None)
         if incoming_form.is_valid():
             post = incoming_form.save(commit=False)
             post.author = request.user

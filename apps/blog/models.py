@@ -59,4 +59,4 @@ class Comment(models.Model):
     enabled = models.BooleanField(default=True)
 
     def __str__(self):
-        return str(self.author) + self.body
+        return str(self.author) + " posted " + self.body + " in " + str(self.post)

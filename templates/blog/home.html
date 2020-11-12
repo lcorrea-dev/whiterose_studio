@@ -8,8 +8,13 @@
 
 {% endblock css %}
 
+
+
 {% block content %}
 
+<h1 class="big-title"><i class="fas fa-home"></i> Blog home</h1>
+
+<div class="filter">
 <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
     Filter posts
 </a>
@@ -17,13 +22,13 @@
         {{ form.media }}
         {{ form.as_p }} 
         <button type="submit"
-                value="Submit">Search now!</button>
+                value="Submit" class="btn btn-primary">Search now!</button>
 </form>
-
+</div>
 
 <div class="post_container">
         {% for post in object_list %}
-
+        {% if post.enabled is True %}
         <div class='post_summary'>
                 {% if post.cover %}
 
@@ -37,15 +42,16 @@
 
                 </div>
                 <div class='post_summary__content'>
-                        <div class="badge bg-primary">{{post.category}}</div>
-                        <div>{{post.title}}</div>
-                        <a href="{% url 'blog-profile-detail' post.author.id %}">{{post.author}}</a>
+                        <div class="badge bg-primary category">{{post.category}}</div>
+                        <div class="post__summary_title_a">{{post.title}}</div>
+                        <a href="{% url 'blog-profile-detail' post.author.id %}" class="post__summary_author_a">By {{post.author}}</a>
                         <p class="post__body">{{ post.body|safe|striptags|truncatechars_html:"150" }}</p>
                         <div>{{post.upload_date}}</div>
                         <div class="post_read_more"><a href="{% url 'blog-post-detail' post.id %}">Read more...</a>
                         </div>
                 </div>
         </div>
+        {% endif %}
 
         {% endfor %}
 </div>

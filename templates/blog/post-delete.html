@@ -1,5 +1,5 @@
 {% extends '../base/base.html' %} {% load static %} {% block content %}
-<div class="text-center">
+<div class="text-center delete-message">
     <form method="post">
         {% csrf_token %}
 
@@ -9,7 +9,7 @@
         </p>
 
         <a href="{% url 'blog-home' %}" class="btn btn-secondary">NO</a>
-        <button class="btn btn-primary" type="submit">YES</button>
+        <button class="btn btn-danger" type="submit">YES</button>
     </form>
 </div>
 {% endblock %}

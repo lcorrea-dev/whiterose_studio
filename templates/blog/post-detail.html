@@ -4,19 +4,13 @@
 {% block content %}
 
 
-{% if user.is_authenticated %}
-<form method="POST">
-        {% csrf_token %}
-        {{ form.as_table }}
-        <button type="submit">Comment!</button>
-</form>
-{% else %}
-<div>Login to make a comment</div>
-{% endif %}
-
 <div class='post'>
         {% if user.is_staff %}
-                <div><a href="{% url 'blog-post-delete' post.id%}">Delete</a></div>
+        <div class="mod-post-header">
+                <p>Moderation options: <p>
+                <div><a class="btn btn-warning  mod-button" href="{% url 'blog-post-delete' post.id%}">Delete post</a></div>
+                <div><a class="btn btn-warning mod-button" href="{% url 'blog-post-update' post.id%}">Update post</a></div>
+        </div>
         {% endif %}
 
         
@@ -36,21 +30,32 @@
 
 
         <h2 class='post__title'> {{ post.title}}</h2>
-        <h3 class='post__author'> <a href="{% url 'blog-profile-detail' post.author.id %}">{{post.author}}</a></h3>
+        <h3 class='post__author'> <a href="{% url 'blog-profile-detail' post.author.id %}">By {{post.author}}</a></h3>
         <div class='post__body'> {{ post.body|safe}}</div>
 
 
 
-        {% if not post.comments.all %}
-        <div>No comments yet... </div>
-        {% else %}
+        
 
+
+        <h2 class="comments-title">Comments</h2>
+
+        {% if not post.comments.all %}
+        <div class="no-comments" >No comments yet... <i class="fas fa-sad-tear"></i> </div>
+        {% else %}
 
         {% for comment in post.comments.all %}
         {% if comment.parent is Null and comment.enabled is True %}
-        <h2>{{comment.author}} {{ comment.upload_date}} {{ comment.id }} {{ comment.body }}</h2>
-        {% endif %}
+        <div class="commentary-section">
+                <div class="comment-header">
+                        <p><i class="fas fa-user author-icon"></i><a href="{% url 'blog-profile-detail' comment.author.profile.id %}">By {{comment.author}}</a></p> 
+                        <p class="comment-upload-date">{{ comment.upload_date|timesince}} ago </p>
+                </div>
 
+        <p class="body">{{ comment.body }}</p>
+        </div>
+        {% endif %}
+      
         <!-- {% for reply in comment.replies.all %}
         <p>{{comment.author}} {{ comment.upload_date}} ({{reply.parent.id}}){{ reply.body }}</p>
         {% endfor %} -->
@@ -63,12 +68,15 @@
 
 </div>
 
-
-
-
-
-
-
+{% if user.is_authenticated %}
+<form method="POST" class="filter comment-form">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <button type="submit" class="btn btn-primary" >Comment!</button>
+</form>
+{% else %}
+<div>Login to make a comment</div>
+{% endif %}
 
 {% endblock content %}
 

@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserChangeForm
 from django import forms
 from .models import Profile, Comment, CategoryPost, Post
 
-from django.contrib.admin.widgets import AdminDateWidget
+from django.contrib.admin.widgets import AdminDateWidget, AdminSplitDateTime
 from django.utils import timezone
 
 
@@ -29,7 +29,10 @@ class CommentForm(forms.ModelForm):
             'body',
         ]
         widgets = {
-            'body': forms.Textarea(attrs={'class': 'form-control'}), }
+            'body': forms.Textarea(), }
+        labels = {
+            'body': "Write your comment here",
+        }
 
 
 class FilterForm(forms.Form):
@@ -39,18 +42,18 @@ class FilterForm(forms.Form):
                                       queryset=CategoryPost.objects.all(), empty_label="All", required=False)
     author = forms.CharField(label='Author', max_length=50, required=False)
     from_upload_date = forms.DateField(
-        label='date', required=False, widget=AdminDateWidget())
-    to_upload_date = forms.DateField(
-        required=False, initial=timezone.now, widget=AdminDateWidget())
+        label='From', required=False, widget=AdminDateWidget())
+    to_upload_date = forms.DateField(label='To',
+                                     required=False, initial=timezone.now, widget=AdminDateWidget())
 
 
 class CreatePostForm(forms.ModelForm):
-    upload_date = forms.DateField(
-        initial=timezone.now, widget=AdminDateWidget())
+    upload_date = forms.SplitDateTimeField(
+        initial=timezone.now, widget=AdminSplitDateTime())
 
     class Meta:
         model = Post
-        fields = ['title', 'upload_date', 'cover', 'body', 'category']
+        fields = ['title', 'category', 'upload_date', 'cover', 'body']
 
 
 class UpdatePostForm(forms.ModelForm):

@@ -10,18 +10,25 @@
 
 {% block content %}
 
-<form method="GET" action="{% url 'blog-post-search' %}" >
-        {{ form.media }}
-        {{ form.as_p }} 
-        <button type="submit"
-                value="Submit">Search now</button>
+<h1 class="big-title"><i class="fas fa-search"></i> Searching posts...</h1>
+
+<div class="filter">
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Filter posts
+        </a>
+        <form method="GET" action="{% url 'blog-post-search' %}" class="collapse" id="collapseExample"> 
+                {{ form.media }}
+                {{ form.as_p }} 
+                <button type="submit"
+                        value="Submit" class="btn btn-primary">Search now!</button>
 </form>
+</div>
 
 <div class="post_container">
         {% for post in object_list %}
-
+        {% if post.enabled is True %}
         <div class='post_summary'>
-{% if post.cover %}
+                {% if post.cover %}
 
                 <div style="background-image: url({{post.cover.url}})"
                      class='post_summary__cover '>
@@ -43,7 +50,7 @@
                         </div>
                 </div>
         </div>
-
+        {% endif %}
         {% endfor %}
 </div>
 <div class="blog_pagination">
