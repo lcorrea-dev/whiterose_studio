@@ -6,7 +6,7 @@ test_index_loads_properly (apps.blog.tests.test_views.ViewsTestCase) ... ok
 test_search_url (apps.blog.tests.test_views.ViewsTestCase) ... ok
 
 ----------------------------------------------------------------------
-Ran 5 tests in 0.285s
+Ran 5 tests in 0.320s
 
 OK
 Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
