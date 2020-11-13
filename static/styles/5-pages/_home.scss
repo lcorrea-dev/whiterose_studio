@@ -132,3 +132,10 @@ body {
     font-size: 2rem;
     color: grey;
 }
+
+.user_list {
+    @include flex(space-around, space-around, row);
+    width: 80%;
+    padding: 2rem;
+    border: 1px solid seashell;
+}

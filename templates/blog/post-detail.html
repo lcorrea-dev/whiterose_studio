@@ -7,7 +7,7 @@
 <div class='post'>
         {% if user.is_staff %}
         <div class="mod-post-header">
-                <p>Moderation options: <p>
+                <p>Mod options: <p>
                 <div><a class="btn btn-warning  mod-button" href="{% url 'blog-post-delete' post.id%}">Delete post</a></div>
                 <div><a class="btn btn-warning mod-button" href="{% url 'blog-post-update' post.id%}">Update post</a></div>
         </div>

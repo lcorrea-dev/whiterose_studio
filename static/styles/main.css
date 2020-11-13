@@ -1522,4 +1522,22 @@ body {
   font-size: 2rem;
   color: grey;
 }
+
+.user_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: space-around;
+      -ms-flex-align: space-around;
+          align-items: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 80%;
+  padding: 2rem;
+  border: 1px solid seashell;
+}
 /*# sourceMappingURL=main.css.map */

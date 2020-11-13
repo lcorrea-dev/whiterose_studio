@@ -49,6 +49,9 @@
 
                     {% else %} {% if user.is_staff %}
                     <li>
+                        <a href="{% url 'list_user' %}"> See users </a>
+                    </li>
+                    <li>
                         <a href="{% url 'blog-post-create' %}"> Create post </a>
                     </li>
                     {% endif %}
