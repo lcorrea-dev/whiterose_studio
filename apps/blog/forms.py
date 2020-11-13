@@ -13,12 +13,13 @@ class ProfileForm(UserChangeForm):
 
         model = Profile
         fields = [
-            'bio',
+
             'pic',
             'website_url',
             'fb_url',
             'twitter_url',
             'instagram_url',
+            'bio',
         ]
 
 
@@ -59,4 +60,4 @@ class CreatePostForm(forms.ModelForm):
 class UpdatePostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'cover', 'body', 'category']
+        fields = ['title', 'category', 'cover', 'body', ]

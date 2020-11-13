@@ -1260,6 +1260,43 @@ h5 {
   margin-top: 2rem;
 }
 
+.password-reset {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 80vh;
+  margin: auto;
+}
+
+.password-reset * {
+  margin: 1rem 0rem;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.password-reset h2 {
+  font-size: 2.8rem;
+}
+
+.password-reset a {
+  width: 40rem;
+}
+
+.btn-reset {
+  margin: auto;
+  width: 100%;
+}
+
 body {
   background-color: #24262b;
   color: white;
@@ -1361,6 +1398,11 @@ body {
 .filter form button {
   margin-top: 1rem;
   font-size: 1.8rem;
+}
+
+.filter p #id_cover,
+.filter p #id_pic {
+  margin-left: 15rem;
 }
 
 .comment-form {

@@ -1,12 +1,13 @@
-{% extends '../base/base.html' %}
-{% block content %}
+{% extends '../base/base.html' %} {% block content %} {% if object_list %}
 
-{% if object_list %}
-{% for user in object_list %}
-<p>Nombre: {{ user.username }}</p>
-<p>email: {{ user.email }}</p>
+<div class="filter">
+    {% for user in object_list %}
+    <p>Username: {{ user.username }}</p>
+    <p>email: {{ user.email }}</p>
+    <button type="button"
+            class="btn btn-primary">See this profile</button>
 
-<br />
-{% endfor %} {% else %}
-<h1>No hay registros de user</h1>
-{% endif %} {% endblock content %}
+    {% endfor %} {% else %}
+    <h1>No users!</h1>
+    {% endif %} {% endblock content %}
+</div>

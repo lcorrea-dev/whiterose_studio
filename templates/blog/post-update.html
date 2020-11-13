@@ -4,8 +4,12 @@
 <link rel="stylesheet" href="{% static 'admin/css/widgets.css' %}" />
 
 {% endblock css %} {% block content %}
-<form method="POST" enctype="multipart/form-data">
-    {{ form.media }} {{ form.as_p }} {% csrf_token %}
-    <button type="submit" value="update">Update now!</button>
-</form>
+<div class="filter">
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.media }} {{ form.as_p }} {% csrf_token %}
+        <button type="submit" value="update" class="btn btn-primary">
+            Update now!
+        </button>
+    </form>
+</div>
 {% endblock content %}
