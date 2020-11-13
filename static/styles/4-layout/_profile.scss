@@ -1,0 +1,42 @@
+.profile_detail {
+    width: 80%;
+    margin: auto;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+
+    @include flex(center, center, column);
+    margin: auto;
+    .profile_detail_pic {
+        img {
+            max-width: 300px;
+            max-height: 300px;
+            min-width: 300px;
+            min-height: 300px;
+            margin-bottom: 4rem;
+        }
+    }
+
+    a,
+    i {
+        color: white;
+        font-size: 1.8rem;
+        margin: 0rem 1rem;
+    }
+    .profile_row {
+        padding: 0.2rem 0rem;
+        width: 50vh;
+
+        @include flex(space-between, space-between, row);
+    }
+    .profile_detail_bio {
+        margin-top: 5rem;
+    }
+    .profile_detail_user {
+        margin: 4rem 0rem;
+        font-size: 4rem;
+    }
+
+    .button_edit {
+        margin-top: 2rem;
+    }
+}
