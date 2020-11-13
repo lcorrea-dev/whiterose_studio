@@ -1,6 +1,6 @@
 {% extends '../base/base.html' %}
 {% load static %}
-
+{% load tz %}
 {% block css %}
         <script src="{% url 'js-catlog' %}"></script>
         <script src="{% static '/admin/js/core.js' %}"></script>
@@ -26,7 +26,7 @@
 
 <div class="post_container">
         {% for post in object_list %}
-        {% if post.enabled is True %}
+        {% if post.enabled is True and post.upload_date|utc|date:"YmdHis" > now|utc|date:"YmdHis" %}
         <div class='post_summary'>
                 {% if post.cover %}
 

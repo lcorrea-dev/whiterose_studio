@@ -1,15 +1,12 @@
-Creating test database for alias 'default'...
-..C:\Repository\whiterose-studio\myvenv\lib\site-packages\django\db\models\fields\__init__.py:1367: RuntimeWarning: DateTimeField Post.upload_date received a naive datetime (2006-10-25 00:00:00) while time zone support is active.
-  warnings.warn("DateTimeField %s received a naive datetime (%s)"
-C:\Repository\whiterose-studio\myvenv\lib\site-packages\django\db\models\fields\__init__.py:1367: RuntimeWarning: DateTimeField Post.upload_date received a naive datetime (2010-10-25 00:00:00) while time zone support is active.
-  warnings.warn("DateTimeField %s received a naive datetime (%s)"
-..C:\Repository\whiterose-studio\myvenv\lib\site-packages\django\db\models\fields\__init__.py:1367: RuntimeWarning: DateTimeField Post.upload_date received a naive datetime (1900-01-01 00:00:00) while time zone support is active.
-  warnings.warn("DateTimeField %s received a naive datetime (%s)"
-C:\Repository\whiterose-studio\myvenv\lib\site-packages\django\views\generic\list.py:86: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'apps.blog.models.Post'> QuerySet.
-  return self.paginator_class(
-.
+Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+test_invalid_form (apps.blog.tests.test_forms.CommentFormCase) ... ok
+test_valid_form (apps.blog.tests.test_forms.CommentFormCase) ... ok
+test_create_post (apps.blog.tests.test_models.PostTestCase) ... ok
+test_index_loads_properly (apps.blog.tests.test_views.ViewsTestCase) ... ok
+test_search_url (apps.blog.tests.test_views.ViewsTestCase) ... ok
+
 ----------------------------------------------------------------------
-Ran 5 tests in 0.723s
+Ran 5 tests in 0.285s
 
 OK
-Destroying test database for alias 'default'...
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
