@@ -1,15 +1,160 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends '../base/base.html' %}
+{% load static %}
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
+{% block css %}
+        <script src="{% url 'js-catlog' %}"></script>
+        <script src="{% static '/admin/js/core.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'admin/css/widgets.css' %}">
 
-    <body>
-        BLOG HOME
-    </body>
+{% endblock css %}
 
-</html>
+
+
+{% block content %}
+
+<h1 class="big-title"><i class="fas fa-home"></i> Blog home</h1>
+
+<div class="filter">
+<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Filter posts
+</a>
+<form method="GET" action="{% url 'blog-post-search' %}" class="collapse" id="collapseExample"> 
+        {{ form.media }}
+        {{ form.as_p }} 
+        <button type="submit"
+                value="Submit" class="btn btn-primary">Search now!</button>
+</form>
+</div>
+
+<div class="post_container">
+        {% for post in object_list %}
+        {% if post.enabled is True %}
+        <div class='post_summary'>
+                {% if post.cover %}
+
+                <div style="background-image: url({{post.cover.url}})"
+                     class='post_summary__cover '>
+                {% else %}
+                
+                <div style="background-image: url({% static "./img/logo.svg" %})"
+                     class='post_summary__cover '>
+                {% endif %}
+
+                </div>
+                <div class='post_summary__content'>
+                        <div class="badge bg-primary category">{{post.category}}</div>
+                        <div class="post__summary_title_a">{{post.title}}</div>
+                        <a href="{% url 'blog-profile-detail' post.author.id %}" class="post__summary_author_a">By {{post.author}}</a>
+                        <p class="post__body">{{ post.body|safe|striptags|truncatechars_html:"150" }}</p>
+                        <div>{{post.upload_date}}</div>
+                        <div class="post_read_more"><a href="{% url 'blog-post-detail' post.id %}">Read more...</a>
+                        </div>
+                </div>
+        </div>
+        {% endif %}
+
+        {% endfor %}
+</div>
+<div class="blog_pagination">
+        <span class="step-links">
+                {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+        </span>
+</div> 
+
+
+
+<section class="social">
+        <div class="social__subscribe">
+                <h2>In the know</h2>
+                <p>Join 320.320 other subscribers and get the major announcements from White Rose Studio straight in
+                        your inbox.</p>
+                <form class="subscribe-form"
+                      id="subscribe-form-id"
+                      action="./sucess-form.html">
+                        <label for="txtEmail"></label>
+                        <input placeholder="email@domain.com"
+                               id="txtEmail"
+                               name="txtEmail">
+                        <button type="submit"
+                                class="btn btn-light"
+                                id="btnSubscribe">SUBMIT</button>
+
+                </form>
+                <p class="errorTxt"></p>
+        </div>
+        <div class="social__links ">
+                <ul>
+                        <li><a href="https://discord.com/"
+                                   target="_blank">
+                                        <img src={% static "./img/social/iconmonstr-discord-1.svg" %}
+                                             alt="discord-logo"
+                                             class="social__img"></a></li>
+                        <li><a href="https://www.facebook.com/fb.whiterose.studio"
+                                   target="_blank"><img src={% static "./img/social/iconmonstr-facebook-2.svg" %}
+                                             alt="facebook-logo"
+                                             class="social__img"></a></li>
+                        <li><a href="https://www.instagram.com/whiterose_games/"
+                                   target="_blank"><img src={% static "./img/social/iconmonstr-instagram-11.svg" %}
+                                             alt="instagram-logo"
+                                             class="social__img"></a></li>
+                        <li><a href="https://store.steampowered.com/?l=spanish"
+                                   target="_blank"><img src={% static "./img/social/iconmonstr-steam-4.svg" %}
+                                             alt="steam-logo"
+                                             class="social__img"></a></li>
+                        <li><a href="https://twitch.tv/"
+                                   target="_blank"><img src={% static "./img/social/iconmonstr-twitch-1.svg" %}
+                                             alt="twitch-logo"
+                                             class="social__img"></a></li>
+                        <li><a href="https://twitter.com/whiterose_games"
+                                   target="_blank"><img src={% static "./img/social/iconmonstr-twitter-1.svg" %}
+                                             alt="twitter-logo"
+                                             class="social__img"></a></li>
+                        <li><a href="https://www.youtube.com/channel/UC9Lp_6YfnLQ0bEhhNtET2rA"
+                                   target="_blank"><img src={% static "./img/social/iconmonstr-youtube-6.svg" %}
+                                             alt="youtube-logo"
+                                             class="social__img"></a></li>
+                        <li><a href="https://discord.com/"
+                                   target="_blank"><img src={% static "./img/social/iconmonstr-discord-1.svg" %}
+                                             alt="discord-logo"
+                                             class="social__img"></a></li>
+                </ul>
+        </div>
+        <div class="social__character">
+                <img src={% static "./img/knight-soul.png" %}
+                     alt="knight-soul-character"
+                     id="character_bottom">
+                <img src={% static  "./img/knight.png" %}
+                     alt="knight-character"
+                     id="character_top">
+        </div>
+</section>
+
+{% endblock content %}
+
+{% block scripts %}
+<script src={% static "./scripts/toggle-nav.js" %}></script>
+<script src={% static "./scripts/scroll-navigation.js" %}></script>
+<script src={% static "./scripts/crossfade.js"%}></script>
+<script src={% static "./scripts/subscribe-validation.js" %}></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+
+
+    
+{% endblock scripts %}

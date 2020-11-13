@@ -1,0 +1,65 @@
+{% extends '../base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section>
+    <h2 class="gallery_title">Community screenshots</h2>
+    <div class="img_gallery">
+        {% for img in imgs %}
+        <div class="container_screenshot">
+            <img src={{ img.image.url }}
+                 class="screenshot">
+            <div class="img_title"
+                 style="display:none;">{{ img.title}}</div>
+            <div class="img_author"
+                 style="display:none;"><a href="{% url 'blog-profile-detail' img.author.id %}">{{img.author}}</a></div>
+        </div>
+        {% endfor %}
+
+
+
+    </div>
+    <div id="myModal"
+         class="modal">
+        <span class="close">X</span>
+        <img class="modal-content"
+             src="/img/logo.svg"
+             id="img01"
+             alt="">
+        <div id="caption"></div>
+        <div id="author"></div>
+
+    </div>
+</section>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if imgs.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ imgs.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ imgs.number }} of {{ imgs.paginator.num_pages }}.
+        </span>
+
+        {% if imgs.has_next %}
+        <a href="?page={{ imgs.next_page_number }}">next</a>
+        <a href="?page={{ imgs.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script src={% static "./scripts/modal-view.js" %}></script>
+<script src={% static "./scripts/toggle-nav.js" %}></script>
+<script src={% static "./scripts/scroll-navigation.js" %}></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+{% endblock scripts %}

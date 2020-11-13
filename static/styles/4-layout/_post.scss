@@ -1,0 +1,92 @@
+.post {
+    width: 80%;
+    margin: auto;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    overflow: hidden;
+    &__cover {
+        height: 20rem;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 50%;
+        }
+    }
+    &__title {
+        margin: 1rem 0rem;
+        @include flex(center, center, row);
+    }
+    &__author {
+        margin: 1rem 0rem;
+        @include flex(center, center, row);
+    }
+    &__body {
+        img {
+            margin: 1.5rem;
+        }
+    }
+}
+
+.post_summary {
+    border: 1px solid whitesmoke;
+    width: 90%;
+    margin: auto;
+
+    @include flex(center, center, row);
+    flex-wrap: wrap;
+    &__cover {
+        min-width: 190px;
+        min-height: 190px;
+        background-size: cover;
+        align-content: center;
+    }
+
+    &__content {
+        padding: 3rem;
+        min-width: 30rem;
+        max-width: 90rem;
+    }
+
+    &__body {
+        word-break: break-all;
+    }
+}
+
+.post__author {
+    margin-bottom: 10rem;
+}
+
+.post_container {
+    margin-top: 10rem;
+    margin-bottom: 2rem;
+}
+
+.blog_pagination {
+    @include flex(center, center, row);
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.post_read_more {
+    @include flex(flex-end, center, row);
+}
+
+.post__body {
+    word-break: break-all;
+}
+
+.category {
+    padding: 1rem;
+    font-size: 1.4rem;
+}
+
+.post__summary_title_a {
+    font-size: 1.8rem;
+}

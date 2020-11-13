@@ -1,0 +1,18 @@
+{% extends '../base/base.html' %} {% block content %}
+
+<div class="filter">
+    <form method="POST"
+          enctype="multipart/form-data">
+        <h2 class="big-title">{{ object.user.username }} Profile</h2>
+        {{ form.as_p }} {% csrf_token %}
+        <p>
+            If u want to change your password,
+            <a href="{% url 'password_reset' %}"> press here</a>
+        </p>
+
+        <button type="submit"
+                value="Submit"
+                class="btn btn-primary">Update your profile</button>
+    </form>
+</div>
+{% endblock %}

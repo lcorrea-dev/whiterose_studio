@@ -1,0 +1,110 @@
+.social {
+    position: relative;
+    background-color: black;
+    @include flex(space-around, center, row);
+    width: 90%;
+    margin: auto;
+    padding: 2rem;
+
+    &__links {
+        flex: 1 1 20rem;
+        @media screen and (max-width: 476px) {
+            margin-top: 2rem;
+        }
+        ul {
+            list-style: none;
+            @include flex(center, center, row);
+            flex-wrap: wrap;
+            li {
+                img {
+                    width: 3rem;
+                    height: 3rem;
+                    background: $background-color;
+                    opacity: 0.3;
+                    margin: 1rem;
+
+                    @media screen and (max-width: 476px) {
+                        margin: 3rem;
+                    }
+                }
+                img:hover {
+                    transition: 0.5s ease;
+                    opacity: 0.9;
+                }
+            }
+        }
+    }
+
+    &__subscribe {
+        flex: 2 1 10rem;
+        p {
+            margin-bottom: 4rem;
+        }
+    }
+
+    @media screen and (max-width: 476px) {
+        flex-direction: column;
+    }
+
+    &__character {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+
+        img {
+            position: absolute;
+            object-fit: cover;
+            bottom: 0px;
+            right: 0px;
+            max-width: 10rem;
+            max-height: 10rem;
+        }
+    }
+}
+
+#character_bottom {
+    opacity: 0;
+    transition: all 0.5s ease-in;
+}
+
+#character_top {
+    transform: scaleX(-1);
+    transition: all 0.5s ease-in-out;
+}
+
+.subscribe-form {
+    @include flex(flex-start, center, row);
+    flex-wrap: wrap;
+    input {
+        padding: 1rem;
+        margin-right: 2rem;
+        @media screen and (max-width: 785px) {
+            width: 100%;
+            margin-right: 0rem;
+        }
+    }
+    button {
+        font-size: 1.4rem;
+        padding: 1rem 4rem;
+        @media screen and (max-width: 785px) {
+            width: 100%;
+            margin-top: 1rem;
+        }
+    }
+    .error {
+        color: hotpink;
+        i {
+            color: $error_color;
+        }
+    }
+}
+.errorTxt {
+    color: hotpink;
+    i {
+        color: $error_color;
+    }
+    min-width: 24rem;
+    @media screen and (max-width: 476px) {
+        text-align: center;
+    }
+}

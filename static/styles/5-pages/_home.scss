@@ -1,0 +1,141 @@
+body {
+    background-color: $background-color;
+    color: $text-main-color;
+}
+
+.big-title {
+    @include flex(center, center, row);
+    font-size: 3.6rem;
+    margin: 30px 10px;
+    i {
+        margin: 0rem 1rem;
+    }
+}
+
+.filter {
+    width: 80%;
+    margin: auto;
+    @include flex(center, center, column);
+    a {
+        font-size: 1.8rem;
+    }
+    form {
+        border: 1px solid whitesmoke;
+        margin: 10px 0px;
+        padding: 30px;
+        @include flex(center, space-around, column);
+
+        .datetime {
+            color: white;
+            font-size: 1.8rem;
+            input {
+                margin-left: 18%;
+            }
+        }
+        input,
+        select,
+        label {
+            font-size: 1.8rem;
+            input {
+                min-width: 50%;
+            }
+        }
+
+        label {
+            min-width: 20rem;
+        }
+        input,
+        select {
+            min-width: 50%;
+        }
+
+        button {
+            margin-top: 1rem;
+            font-size: 1.8rem;
+        }
+    }
+    p {
+        #id_cover,
+        #id_pic {
+            margin-left: 15rem;
+        }
+    }
+}
+
+.comment-form {
+    min-width: 80%;
+    * {
+        margin-top: 2rem;
+    }
+    textarea {
+        padding: 2rem;
+        width: 100%;
+        height: 15rem;
+    }
+    button {
+        font-size: 1.8rem;
+    }
+}
+
+.commentary-section {
+    border: 1px solid white;
+    padding: 2rem;
+}
+.comment-header {
+    @include flex(flex-start, center, row);
+    p,
+    a {
+        color: cyan;
+    }
+    .comment-upload-date {
+        color: silver;
+        margin-left: 2rem;
+        font-size: 1.4rem;
+    }
+}
+.comments-title {
+    margin-top: 3rem;
+    background-color: grey;
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+.author-icon {
+    margin-right: 2rem;
+}
+
+.delete-message {
+    height: 80vh;
+    @include flex(center, center, row);
+    a,
+    button {
+        font-size: 1.4rem;
+        padding: 1rem 4rem;
+        margin: 1rem 3rem;
+    }
+}
+
+.mod-post-header {
+    @include flex(center, center, row);
+    margin-bottom: 2rem;
+    border: 1px solid yellow;
+    padding: 5rem;
+    p {
+        font-size: 1.6rem;
+    }
+    .mod-button {
+        font-size: 1.6rem;
+        margin: 0rem 2rem;
+    }
+}
+
+.no-comments {
+    font-size: 2rem;
+    color: grey;
+}
+
+.user_list {
+    @include flex(space-around, space-around, row);
+    width: 80%;
+    padding: 2rem;
+    border: 1px solid seashell;
+}

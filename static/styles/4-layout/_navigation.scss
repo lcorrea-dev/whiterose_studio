@@ -1,0 +1,108 @@
+.mainheader {
+    width: 100%;
+    @include flex(center, center, row);
+    height: 10vh;
+    min-height: 6.6rem;
+    position: sticky;
+    top: 0rem;
+
+    background-color: $main-color;
+    z-index: 2000;
+    &__logo {
+        position: absolute;
+        top: 0.2rem;
+        left: 10rem;
+        @media screen and (max-width: 700px) {
+            left: 2rem;
+        }
+        z-index: 2;
+
+        @include flex(flex-start, center, row);
+        padding-top: 0rem;
+        img {
+            min-width: 12rem;
+            max-width: 14rem;
+            border-radius: 0rem 0rem 2rem 2rem;
+        }
+        flex: 1 1 2rem;
+    }
+
+    .logo_animation {
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+        transition: 1s;
+        min-width: 7rem;
+        max-width: 9rem;
+    }
+
+    .logo_animation_back {
+        -webkit-transition: 2s;
+        -moz-transition: 2s;
+        -ms-transition: 2s;
+        -o-transition: 2s;
+        transition: 2s;
+        min-width: 12rem;
+        max-width: 14rem;
+        @media screen and (max-width: 700px) {
+            min-width: 10rem;
+            max-width: 11rem;
+        }
+    }
+
+    &__nav {
+        flex: 2 1 2rem;
+    }
+}
+
+.burger {
+    display: none;
+}
+
+@media screen and (max-width: 625px) {
+    .burger {
+        display: block;
+        i {
+            font-size: 2.5rem;
+        }
+        cursor: pointer;
+        right: 0rem;
+        position: absolute;
+        top: 0px;
+        margin: 2.5rem 2.5rem;
+    }
+}
+
+.horizontallist {
+    list-style: none;
+    @include flex(flex-end, center, row);
+
+    padding-right: 5rem;
+    li {
+        padding: 0rem 2rem;
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    @media screen and (max-width: 625px) {
+        display: none;
+    }
+}
+
+.nav-open {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9);
+
+    display: flex;
+    top: 100%;
+    width: 100%;
+
+    align-items: flex-end;
+    flex-direction: column;
+    li {
+        padding: 2rem 0rem;
+    }
+}

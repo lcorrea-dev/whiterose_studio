@@ -1,0 +1,109 @@
+.form-work-with-us {
+    min-height: 72vh;
+    @include flex(center, center, row);
+    flex-wrap: wrap;
+    margin: auto;
+    margin-top: 3rem;
+    padding: 5rem;
+    width: 60%;
+    background-color: rgba(#ffffff, 0.1);
+    border-radius: 3%;
+    h2 {
+        font-size: 3.8rem;
+        margin-bottom: 2rem;
+        @include flex(center, center, row);
+    }
+    img {
+        object-fit: cover;
+        width: 70%;
+        min-width: 40rem;
+    }
+    form {
+        width: 60%;
+        label {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+        input,
+        select,
+        textarea {
+            padding: 0.8rem;
+            margin: 0.5rem 0rem;
+            min-width: 100%;
+        }
+    }
+    .form-left {
+        flex: 1 1 48rem;
+    }
+
+    li {
+        list-style: none;
+        padding: 0.5rem 0rem;
+    }
+    button {
+        margin-top: 2rem;
+        width: 100%;
+        padding: 1rem;
+        border-radius: 0.9rem;
+        background-color: $secondary_color;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .form-right {
+        flex: 1 1 1rem;
+        @include flex(center, center, row);
+    }
+
+    @media screen and (max-width: 1226px) {
+        flex-direction: column-reverse;
+        .form-left {
+            h2 {
+                margin-top: 2rem;
+            }
+            width: 100%;
+            @include flex(center, center, column);
+            button {
+                width: 100%;
+            }
+        }
+    }
+    @media screen and (max-width: 700px) {
+        width: 100%;
+        form {
+            width: 95%;
+        }
+        img {
+            min-width: 100%;
+        }
+    }
+    .error {
+        color: hotpink;
+        i {
+            color: $error_color;
+        }
+    }
+
+    .helptext,
+    li {
+        font-size: 1.1rem;
+    }
+}
+
+#summaryErrors,
+.errorlist {
+    background-color: rgba(#ffffff, 0.1);
+    border: 1px solid red;
+    padding: 1rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    color: $error_color;
+    display: none;
+}
+
+.errorlist {
+    display: contents;
+    color: rgb(255, 115, 115);
+}

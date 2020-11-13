@@ -1,0 +1,13 @@
+.awards {
+    @include flex(center, center, row);
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+    &__img {
+        padding: 3rem;
+        width: 25rem;
+        @media screen and (max-width: 750px) {
+            width: 20rem;
+            padding: 2rem;
+        }
+    }
+}
