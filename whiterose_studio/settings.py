@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'apps.gallery',
     'ckeditor',
     'django_cleanup.apps.CleanupConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

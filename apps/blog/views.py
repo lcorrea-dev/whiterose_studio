@@ -20,6 +20,13 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
+from rest_framework import generics, status
+from .serializers import PostSerializer, ProfileSerializer
+from rest_framework.decorators import api_view
+from django.shortcuts import render, redirect, get_object_or_404
+from rest_framework.response import Response
+
+
 class PostList(ListView):
     model = Post
     template_name = 'blog/home.html'
@@ -152,3 +159,37 @@ class PostDelete(DeleteView):
     model = Post
     template_name = 'blog/post-delete.html'
     success_url = reverse_lazy('blog-home')
+
+
+class API_Posts(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+
+class API_Post_detail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+
+@api_view(['GET'])
+def API_Profiles(request):
+    if request.method == "GET":
+        profiles = Profile.objects.all()
+        serializer = ProfileSerializer(profiles, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['GET', 'PUT'])
+def API_Profile_detail(request, pk):
+    profile = get_object_or_404(Profile, id=pk)
+
+    if request.method == 'GET':
+        serializer = ProfileSerializer(profile)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        serializer = ProfileSerializer(profile, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
