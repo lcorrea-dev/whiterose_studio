@@ -96,6 +96,12 @@ def detail_post(request, id):
         return render(request, 'blog/post-detail.html', context)
 
 
+def create_profile(request):
+    profile = Profile(user=request.user)
+    profile.save()
+    return redirect('blog-profile-detail', profile.id)
+
+
 def detail_profile(request, id):
     profile = Profile.objects.get(id=id)
     context = {'profile': profile}

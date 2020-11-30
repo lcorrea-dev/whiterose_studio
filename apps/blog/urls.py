@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import PostList, detail_post, detail_profile, ProfileUpdate, FilterPostList, create_post, PostDelete, PostUpdate, update_post, API_Posts, API_Post_detail, API_Profiles, API_Profile_detail
+from .views import PostList, detail_post, detail_profile, ProfileUpdate, FilterPostList, create_post, PostDelete, PostUpdate, update_post, API_Posts, API_Post_detail, API_Profiles, API_Profile_detail, create_profile
 
 from rest_framework.urlpatterns import format_suffix_patterns
 
@@ -19,7 +19,9 @@ urlpatterns = [
     path('api/posts/<int:pk>/', API_Post_detail.as_view(), name='api-post-detail'),
     path('api/profiles/', API_Profiles, name='api-profiles'),
     path('api/profiles/<int:pk>/', API_Profile_detail,
-         name='api-profile-detail')
+         name='api-profile-detail'),
+    path('profile/create/', create_profile,
+         name='create-profile')
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

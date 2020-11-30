@@ -25,5 +25,8 @@
 
         <a href="{% url 'password_reset' %}">Forgot password?</a>
     </form>
+    <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"
+        >Login with Facebook</a
+    >
 </div>
 {% endblock %}
