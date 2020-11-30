@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'social_django',
     'social.apps.django_app.default',
+    'pwa',
 
 ]
 
@@ -164,3 +165,27 @@ AUTHENTICATION_BACKENDS = [
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 SOCIAL_AUTH_FACEBOOK_KEY = os.getenv("FB_KEY")
 SOCIAL_AUTH_FACEBOOK_SECRET = os.getenv("FB_SECRET_KEY")
+
+# PWA
+PWA_SERVICE_WORKER_PATH = os.path.join(
+    BASE_DIR, 'static/scripts', 'serviceworker.js')
+
+PWA_APP_NAME = 'Whiterose Studio PWA'
+PWA_APP_DESCRIPTION = 'Whiterose Studio created by Luis Correa'
+PWA_APP_THEME_COLOR = '#87EFC3'
+PWA_APP_BACKGROUND_COLOR = '#fff'
+PWA_APP_ICONS = [
+    {
+        'src': '/static/img/logos/128px.png',
+        'sizes': '128x128'
+    },
+    {
+        'src': '/static/img/logos/256px.png',
+
+        'sizes': '256x256'
+    },
+    {
+        'src': '/static/img/logos/512px.png',
+
+        'sizes': '512x512'}
+]
