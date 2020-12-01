@@ -1,17 +1,23 @@
 {% extends '../base/base.html' %} {% block content %}
-<div id="registro" class="form-work-with-us">
-    <form method="POST" id="formulario">
+<div id="registro"
+     class="form-work-with-us">
+    <form method="POST"
+          id="formulario">
         {% csrf_token %}
         <h2>Login</h2>
         <div class="form-group">
             <label for="username">Username</label><br />
-            <input name="username" class="form-control" type="text" />
+            <input name="username"
+                   class="form-control"
+                   type="text" />
             <div>{{ form.errors.username }}</div>
         </div>
 
         <div class="form-group">
             <label for="password">Password</label><br />
-            <input name="password" class="form-control" type="password" />
+            <input name="password"
+                   class="form-control"
+                   type="password" />
             <div>{{ form.errors.password }}</div>
         </div>
 
@@ -21,12 +27,13 @@
         </div>
         {% endif %} {{form.non_field_errors}}
 
-        <button class="btn" type="submit">LOGIN</button>
-
+        <button class="btn"
+                type="submit">LOGIN</button>
+        <i class="fab fa-facebook-square"
+           style="font-size: 20px; margin: 20px 0px"></i>
+        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook <br></a>
         <a href="{% url 'password_reset' %}">Forgot password?</a>
     </form>
-    <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"
-        >Login with Facebook</a
-    >
+
 </div>
 {% endblock %}

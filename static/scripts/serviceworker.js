@@ -1,4 +1,4 @@
-var staticCacheName = 'academico-v1';
+var staticCacheName = 'whiterose-studio-v1';
 
 self.addEventListener('install', function(event) {
     event.waitUntil(
