@@ -1,14 +1,20 @@
 {% extends '../base/base.html' %} {% load static %} {% block content %}
 <div class="profile_detail">
     {% if user.is_authenticated and user == profile.user %}
-    <a class="btn btn-warning button_edit"
-       href="{% url 'blog-profile-update' profile.id %}">Edit your profile</a>
+    <a
+        class="btn btn-warning button_edit"
+        href="{% url 'blog-profile-update' profile.id %}"
+        >Edit your profile</a
+    >
     {% elif user.is_staff%}
     <div class="mod-post-header">
         <p>Mod options:</p>
         <p>
-            <a class="btn btn-warning button_edit"
-               href="{% url 'blog-profile-update' profile.id %}">Edit this profile</a>
+            <a
+                class="btn btn-warning button_edit"
+                href="{% url 'blog-profile-update' profile.id %}"
+                >Edit this profile</a
+            >
         </p>
     </div>
 
@@ -18,57 +24,47 @@
     {% if profile.pic %}
 
     <div class="profile_detail_pic">
-        <img src="{{ profile.pic.url}}"
-             alt="" />
+        <img src="{{ profile.pic.url}}" alt="" />
     </div>
     {% else %}
 
     <div class="profile_detail_pic">
-        <img src="{% static "./img/logo.svg" %}"
-             alt="">
+        <img src="{% static "./img/logo.svg" %}" alt="">
     </div>
     {% endif %} {% if profile.website_url %}
     <div class="profile_row">
         <i class="fas fa-external-link-square-alt"></i>
-        <a href="{{ profile.website_url}}"
-           class="profile_detail_web">
+        <a href="{{ profile.website_url}}" class="profile_detail_web">
             {{ profile.website_url}}
         </a>
     </div>
     {% endif %} {% if profile.fb_url %}
     <div class="profile_row">
         <i class="fab fa-facebook-square"></i>
-        <a href="{{ profile.fb_url}}"
-           class="profile_detail_fb">
+        <a href="{{ profile.fb_url}}" class="profile_detail_fb">
             {{ profile.fb_url}}
         </a>
     </div>
     {% endif %} {% if profile.twitter_url %}
     <div class="profile_row">
         <i class="fab fa-twitter-square"></i>
-        <a href="{{ profile.twitter_url}}"
-           class="profile_detail_twitter">
+        <a href="{{ profile.twitter_url}}" class="profile_detail_twitter">
             {{ profile.twitter_url}}
         </a>
     </div>
     {% endif %} {% if profile.instagram_url %}
     <div class="profile_row">
         <i class="fab fa-instagram-square"></i>
-        <a href="{{ profile.instagram_url}}"
-           class="profile_detail_instagram">
+        <a href="{{ profile.instagram_url}}" class="profile_detail_instagram">
             {{ profile.instagram_url}}
         </a>
     </div>
-    {% endif %}
-
-    {% if profile.user.email %}
+    {% endif %} {% if profile.user.email %}
     <div class="profile_row">
         <i class="fas fa-envelope"></i>
         <a class="profile_detail_email"> {{ profile.user.email}} </a>
     </div>
-    {% endif %}
-
-    {% if profile.bio %}
+    {% endif %} {% if profile.bio %}
     <p class="profile_detail_bio">{{ profile.bio}}</p>
     {% endif %}
 </div>
